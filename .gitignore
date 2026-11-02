@@ -1,0 +1,19 @@
+# Derleme ciktisi
+/build/
+
+# Kisisel Hammerspoon config'i (repoda ornek olarak examples/ var)
+/hammerspoon-init.lua
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Swift / Xcode (ileride Xcode projesine gecilirse diye)
+.swiftpm/
+.build/
+*.xcodeproj/xcuserdata/
+DerivedData/
+
+# Silinmeyi bekleyen dosyalar
+/_to_delete/
