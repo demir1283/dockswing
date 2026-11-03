@@ -1,8 +1,14 @@
 # Derleme ciktisi
 /build/
 
+# Yerel imzalama sertifikasinin parolasi ve isaretleri (asla depoya girmez)
+/.signing/
+
 # Kisisel Hammerspoon config'i (repoda ornek olarak examples/ var)
 /hammerspoon-init.lua
+
+# Silinmeyi bekleyen dosyalar
+/_to_delete/
 
 # macOS
 .DS_Store
@@ -14,6 +20,3 @@
 .build/
 *.xcodeproj/xcuserdata/
 DerivedData/
-
-# Silinmeyi bekleyen dosyalar
-/_to_delete/

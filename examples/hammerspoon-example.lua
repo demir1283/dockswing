@@ -1,25 +1,27 @@
--- DockToggle Hammerspoon entegrasyon ornegi
+-- DockSwing Hammerspoon entegrasyon ornegi
 --
--- DockToggle'in arayuzu yoktur; girisle birlikte baslamasi icin Hammerspoon'a
--- birakilmistir. Asagidaki fonksiyon DockToggle calismiyorsa onu arka planda
+-- DockSwing'in arayuzu yoktur; girisle birlikte baslamasi icin Hammerspoon'a
+-- birakilmistir. Asagidaki fonksiyon DockSwing calismiyorsa onu arka planda
 -- baslatir, calisiyorsa hicbir sey yapmaz. Bu yuzden config yeniden
 -- yuklendiginde tekrar acmaz ve guvenle birden fazla yerden cagrilabilir.
 
-local function ensureDockToggle()
-    if not hs.application.get("com.local.docktoggle") then
-        hs.task.new("/usr/bin/open", nil, { "-g", "-b", "com.local.docktoggle" }):start()
+local dockSwingID = "com.demir1283.dockswing"
+
+local function ensureDockSwing()
+    if not hs.application.get(dockSwingID) then
+        hs.task.new("/usr/bin/open", nil, { "-g", "-b", dockSwingID }):start()
     end
 end
 
 -- Hammerspoon acilisinda baslat
-ensureDockToggle()
+ensureDockSwing()
 
--- Istege bagli: DockToggle bir sebeple kapanirsa (cokme, pkill) uyanmada veya
+-- Istege bagli: DockSwing bir sebeple kapanirsa (cokme, pkill) uyanmada veya
 -- monitor tak/cikar sirasinda geri gelsin.
-dockToggleWake = hs.caffeinate.watcher.new(function(event)
-    if event == hs.caffeinate.watcher.systemDidWake then ensureDockToggle() end
+dockSwingWake = hs.caffeinate.watcher.new(function(event)
+    if event == hs.caffeinate.watcher.systemDidWake then ensureDockSwing() end
 end)
-dockToggleWake:start()
+dockSwingWake:start()
 
-dockToggleScreens = hs.screen.watcher.new(ensureDockToggle)
-dockToggleScreens:start()
+dockSwingScreens = hs.screen.watcher.new(ensureDockSwing)
+dockSwingScreens:start()
